@@ -1,0 +1,125 @@
+body {
+  background: linear-gradient(to right, #3b82f6, #9333ea);
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 100%;
+  margin-top: 3rem;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#weather-form {
+  width: 70%;
+  position: relative;
+}
+.search-button {
+  position: absolute;
+  top: 14px;
+  right: -40px;
+  background: none;
+  border: none;
+}
+.search-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: none !important;
+  fill: white;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0.25rem rgba(255, 255, 255, 0.5);
+}
+
+.title-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  padding: 0px;
+  margin: 0px;
+  margin-top: 10px;
+}
+
+.title {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 1.5rem;
+}
+.subtitle {
+  color: white;
+  font-size: 13px;
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 3px;
+}
+
+.weather-set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: -1rem;
+}
+.weather-info {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  color: white;
+  width: 70%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.city-name,
+.country-shorter {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+}
+.city-area,
+.temp-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.temperature {
+  font-size: 55px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.description-text {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 5px;
+}
+
+.description {
+  text-align: center;
+}
