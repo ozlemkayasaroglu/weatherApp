@@ -7,7 +7,7 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="container">
       <div class="search">
         <form id="weather-form">
           <input
@@ -16,7 +16,7 @@
             id="search-bar"
             placeholder="Enter city name"
           />
-          <button type="button" class="search-button">
+          <button type="submit" class="search-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -29,20 +29,113 @@
           </button>
         </form>
       </div>
+
       <div class="title-bar" id="title-bar">
         <p class="title">Welcome to Weather App</p>
         <p class="subtitle">
           Enter a city name to get the current weather conditions
         </p>
       </div>
+
+      <div class="weather-set">
+        <div class="weather-info" id="weather-info">
+          <div class="city-area" id="city-area"></div>
+          <div class="temp-area" id="temp-area"></div>
+          <div class="description" id="description"></div>
+        </div>
+        <div class="weather-details" id="weather-details">
+          <div class="weather-box" id="weather-box">
+            <div class="weatherBox-detail" id="feelsLikeArea">
+              <svg
+                class="lucide-thermometer"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path>
+              </svg>
+              <div class="weatherBox-text" id="feelsLikeTextArea">
+                <p class="text">Feels Like</p>
+              </div>
+            </div>
+
+            <div class="weatherBox-detail" id="humidityArea">
+              <svg
+                class="lucide-droplets"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"
+                ></path>
+                <path
+                  d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"
+                ></path>
+              </svg>
+              <div class="weatherBox-text" id="humidityTextArea">
+                <p class="text">Humidity</p>
+              </div>
+            </div>
+
+            <div class="weatherBox-detail" id="windSpeedArea">
+              <svg
+                class="lucide-wind"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"></path>
+                <path d="M9.6 4.6A2 2 0 1 1 11 8H2"></path>
+                <path d="M12.6 19.4A2 2 0 1 0 14 16H2"></path>
+              </svg>
+              <div class="weatherBox-text" id="windSpeedTextArea">
+                <p class="text">Wind Speed</p>
+              </div>
+            </div>
+            <div class="weatherBox-detail" id="pressureArea">
+              <svg
+                class="lucide-gauge"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m12 14 4-4"></path>
+                <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
+              </svg>
+              <div class="weatherBox-text" id="pressureTextArea">
+                <p class="text">Pressure</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="weather-set">
-      <div class="weather-info" id="weather-info"></div>
-      <div class="city-area" id="city-area"></div>
-      <div class="temp-area" id="temp-area"></div>
-      <div class="description" id="description"></div>
-    </div>
     <script src="app.js"></script>
   </body>
 </html>
