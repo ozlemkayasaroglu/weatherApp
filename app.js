@@ -18,6 +18,11 @@ const windSpeedArea = document.getElementById("windSpeedArea");
 const pressureTextArea = document.getElementById("pressureTextArea");
 const pressureArea = document.getElementById("pressureArea");
 
+const feelsLikeTemp = document.getElementById("feels-like-temp");
+const humidityTemp = document.getElementById("humidity-temp");
+const windSpeedTemp = document.getElementById("wind-speed-temp");
+const pressureTemp = document.getElementById("pressure-temp");
+
 weatherInfo.style.display = "none";
 weatherDetails.style.display = "none";
 
@@ -26,32 +31,35 @@ function convertToCelsius(fahrenheit) {
 }
 
 async function updateWeatherDetails(data) {
-  const feelsLikeTemp = document.createElement("p");
   feelsLikeTemp.textContent = `${convertToCelsius(data.main.feels_like)}°C`;
-  feelsLikeTemp.classList.add("feels-like-temp");
   feelsLikeTextArea.appendChild(feelsLikeTemp);
   feelsLikeArea.appendChild(feelsLikeTextArea);
 
-  const humidityTemp = document.createElement("p");
   humidityTemp.textContent = `${convertToCelsius(data.main.humidity)}%`;
-  humidityTemp.classList.add("humidity-temp");
   humidityTextArea.appendChild(humidityTemp);
   humidityArea.appendChild(humidityTextArea);
-
-  const windSpeedTemp = document.createElement("p");
 
   windSpeedTemp.textContent = `${data.wind.speed}m/s`;
   windSpeedTemp.classList.add("wind-speed-temp");
   windSpeedTextArea.appendChild(windSpeedTemp);
-  windSpeedArea.appendChild(windSpeedTextArea);
 
-  const pressureTemp = document.createElement("p");
   pressureTemp.textContent = `${data.main.pressure}hPa`;
-  pressureTemp.classList.add("pressure-temp");
   pressureTextArea.appendChild(pressureTemp);
   pressureArea.appendChild(pressureTextArea);
 }
 async function fetchWeather(city) {
+  cityArea.innerHTML = "";
+  tempArea.innerHTML = "";
+  description.innerHTML = "";
+
+  const loadingSpinner = document.createElement("div");
+  loadingSpinner.classList.add("loading-spinner");
+  loadingSpinner.innerHTML = `
+  <div class="spinner"></div>
+  <p>Hava durumu yükleniyor...</p>
+`;
+  weatherInfo.appendChild(loadingSpinner);
+
   try {
     const response = await fetch(
       `https://weather-api-chi-two.vercel.app/weather?city=${city}`,
@@ -65,8 +73,13 @@ async function fetchWeather(city) {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
     const data = await response.json();
+    weatherInfo.removeChild(loadingSpinner);
+
+    if (!data || !data.name) {
+      alert("Şehir bulunamadı.");
+      return;
+    }
 
     const cityName = document.createElement("h2");
     cityName.textContent = data.name;
@@ -96,7 +109,11 @@ async function fetchWeather(city) {
 
     await updateWeatherDetails(data);
   } catch (error) {
+    if (weatherInfo.contains(loadingSpinner)) {
+      weatherInfo.removeChild(loadingSpinner);
+    }
     console.error("Hata oluştu:", error.message);
+    alert("Şehir bulunamadı.");
   }
 }
 
